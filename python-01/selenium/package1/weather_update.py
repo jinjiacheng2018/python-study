@@ -6,6 +6,8 @@
 from selenium import webdriver
 
 # 访问天气网站
+from selenium.webdriver.common.by import By
+
 chrome = webdriver.Chrome(r'E:\Test\Selenimu\BrowserDriver\chromedriver.exe')
 url = 'http://www.weather.com.cn/html/province/jiangsu.shtml'
 chrome.get(url)
@@ -15,6 +17,8 @@ chrome.get(url)
 def get_minimum_temperature():
     # 封装数据
     weather_city_list = chrome.find_element_by_class_name('forecastBox')
+    # 可替换如下写法：一般不常用
+    # weather_city_list = chrome.find_element(By.CLASS_NAME,'forecastBox')
     city_weather_list = weather_city_list.text.split('℃\n')
 
     # 定义变量保存最低温度与城市
